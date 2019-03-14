@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE provider>
+<provider version="1.0" id="googlephoto">
+    <name>Google Photo</name>
+    <description>Google Photo account provider</description>
+    <icon>image://theme/graphic-service-google</icon>
+    <sign-up-link>www.google.com</sign-up-link>
+    <domains>.*google\.com</domains>
+
+    <template>
+        <group name="auth">
+            <setting name="method">oauth2</setting>
+            <setting name="mechanism">web_server</setting>
+            <group name="oauth2">
+                <group name="web_server">
+                    <setting name="Host">accounts.google.com</setting>
+                    <setting name="AuthPath">o/oauth2/auth?access_type=offline</setting>
+                    <setting name="TokenPath">o/oauth2/token</setting>
+                    <setting name="RedirectUri">urn:ietf:wg:oauth:2.0:oob</setting>
+                    <setting name="ResponseType">code</setting>
+                    <setting name="Scope" type="as">["https://www.googleapis.com/auth/photoslibrary", "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]</setting>
+                    <setting name="AllowedSchemes" type="as">["https","http"]</setting>
+                </group>
+            </group>
+        </group>
+    </template>
+</provider>
